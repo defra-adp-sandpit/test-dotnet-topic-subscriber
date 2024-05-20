@@ -1,0 +1,32 @@
+@Test.Dotnet.Topic.Subscriber.Api_HostAddress = https://localhost:7118
+
+GET {{Test.Dotnet.Topic.Subscriber.Api_HostAddress}}/api/demo
+
+###
+
+POST {{Test.Dotnet.Topic.Subscriber.Api_HostAddress}}/api/demo
+Content-Type: application/json
+
+{
+    "name":"item3"
+}
+
+###
+
+PATCH {{Test.Dotnet.Topic.Subscriber.Api_HostAddress}}/api/demo
+Content-Type: application/json
+
+{
+    "id":"1",
+    "name":"item3"
+}
+
+###
+
+GET {{Test.Dotnet.Topic.Subscriber.Api_HostAddress}}/api/demo/1
+
+###
+
+DELETE {{Test.Dotnet.Topic.Subscriber.Api_HostAddress}}/api/demo/3
+
+###

@@ -1,0 +1,10 @@
+services:
+  test-dotnet-topic-subscriber:
+    build:
+      context: .
+      target: production
+    image: test-dotnet-topic-subscriber
+    container_name: test-dotnet-topic-subscriber
+    environment:
+      AppInsights__ConnectionString: ${APPINSIGHTS_CONNECTIONSTRING}
+      AppInsights__CloudRole: test-dotnet-topic-subscriber-local

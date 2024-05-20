@@ -1,0 +1,24 @@
+services:
+  test-dotnet-topic-subscriber-core-tests:
+    build:
+      target: development
+    image: test-dotnet-topic-subscriber-core-tests-development
+    container_name: test-dotnet-topic-subscriber-core-tests
+    user: root
+    entrypoint: sh -c "cd /home/dotnet && chown -R dotnet:dotnet . && su dotnet -c 'dotnet watch --project test/Test.Dotnet.Topic.Subscriber.Core.Tests/Test.Dotnet.Topic.Subscriber.Core.Tests.csproj test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./test-output/'"
+    volumes:
+      - ./src/Test.Dotnet.Topic.Subscriber.Core:/home/dotnet/src/Test.Dotnet.Topic.Subscriber.Core
+      - ./test/Test.Dotnet.Topic.Subscriber.Core.Tests:/home/dotnet/test/Test.Dotnet.Topic.Subscriber.Core.Tests
+      - ./test-output:/home/dotnet/Test.Dotnet.Topic.Subscriber.Core.Tests/test-output
+
+  test-dotnet-topic-subscriber-api-tests:
+    build:
+      target: development
+    image: test-dotnet-topic-subscriber-api-tests-development
+    container_name: test-dotnet-topic-subscriber-api-tests
+    user: root
+    entrypoint: sh -c "cd /home/dotnet && chown -R dotnet:dotnet . && su dotnet -c 'dotnet watch --project test/Test.Dotnet.Topic.Subscriber.Api.Tests/Test.Dotnet.Topic.Subscriber.Api.Tests.csproj test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./test-output/'"
+    volumes:
+      - ./src/Test.Dotnet.Topic.Subscriber.Api:/home/dotnet/src/Test.Dotnet.Topic.Subscriber.Api
+      - ./test/Test.Dotnet.Topic.Subscriber.Api.Tests:/home/dotnet/test/Test.Dotnet.Topic.Subscriber.Api.Tests
+      - ./test-output:/home/dotnet/Test.Dotnet.Topic.Subscriber.Api.Tests/test-output

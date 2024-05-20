@@ -1,0 +1,12 @@
+# This override file should be used when running this service in isolation
+# to provide required sibling services for local testing
+
+services:
+  test-dotnet-topic-subscriber:
+    build:
+      target: development
+    ports:
+      - "3007:3007"
+    volumes:
+      - ./src/Test.Dotnet.Topic.Subscriber.Api:/home/dotnet/src/Test.Dotnet.Topic.Subscriber.Api
+      - ./src/Test.Dotnet.Topic.Subscriber.Core:/home/dotnet/src/Test.Dotnet.Topic.Subscriber.Core
